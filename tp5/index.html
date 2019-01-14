@@ -6,28 +6,135 @@
         <title>TP5</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/libs/vue.js"></script>
+        <script type="text/javascript" src="js/libs/bootstrap.js"></script>
+        <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/weather-icons.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="main.js"></script>-->
+
+                <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
     </head>
-    <body>        
-        <h1>TP5</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
+    <body>  
+      <a href="https://galilee.univ-paris13.fr/master/master-ingenierie-innovation-images-reseaux-m3ir/" target="_blank"><img class="gallilee" src="../galilee.png" alt="Logo Galilee"/></a>
+    <div class="container">
+      <div class="v-fs-wrap">
+                  <video autoplay muted loop id="vid">
+                      <source src="img/clouds.mp4" type="video/mp4">
+                  </video>
+              </div>
+    <div id="weatherApp">
+            <!-- ici votre code HTML utilisé par VUE -->
+        <h1 id="title"><i class="wi wi-day-thunderstorm"></i>TP5<br>Application Météo</h1>
+        
+
+
+        
+
+                <!-- formulaire de saisie de ville -->
+        <form v-on:submit="addCity">
+            <div class="input-group">
+                <input type="search" class="form-control" v-model="formCityName" placeholder="Search for..." aria-label="Search for..." autofocus required>
+            </div>
+                <span class="input-group-btn">
+                    <button class="btn1 btn-primary" type="submit">Go!</button>
+                </span>
+
+            <!-- affichage de nombre de caractères saisie -->
+            <small class="text-muted">
+                {{formCityName.length}} car.
+            </small>
+
+                           
+        </form>
+            <div class="alert alert-danger" role="alert" v-if='messageForm != ""'>
+                {{messageForm}}
+            </div> 
+<!-- fin: formulaire de saisie de ville -->
+
+        <!-- Listing des villes, boucle sur l'array : cityList -->
+        <h4>Liste des villes ({{cityList.length}})</h4>
+        <ul class="list-group">
+            <a v-for="city in cityList" v-on:click="meteo(city)" class="list-group-item d-flex justify-content-between align-items-center">
+                {{city.name}}
+                <button v-on:click="remove(city)" class="btn btn-secondary btn-sm" title="Supprimer de la liste">&times; Supprimer</button>
+            </a>
+        </ul>
+
+        <div class="alert alert-primary" role="alert" v-if="cityList.length==0">
+            Aucune ville de saisie!
+        </div>
+
+        <!-- fin : Listing des villes -->
+        
+      <!-- meteo de la ville selectionnée -->
+          <div v-if="cityWeatherLoading"> Chargement de la météo...</div>
+
+          <div v-if="cityWeather">
+
+              <div class="card" style="width: 80%;" v-if="cityWeather">
+                  <div class="card-header">
+                      {{cityWeather.name}} 
+                  </div>
+                  <img class="card-img-top" v-bind:src="'https://maps.googleapis.com/maps/api/staticmap?markers='+cityWeather.coord.lat+','+cityWeather.coord.lon+'&zoom=14&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg'" alt="Card image cap">
+                  <div class="card-body">
+                      <h5 class="card-title">
+                          <i v-bind:class="'wi wi-owm-day-'+cityWeather.weather[0].id"></i>
+                          {{cityWeather.main.temp}}<i class="wi wi-celsius"></i>                            
+                      </h5>
+                      <p class="card-text">{{cityWeather.weather[0].description}}</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                          <i class="wi wi-cloud"></i> Nuage: {{cityWeather.clouds.all}}%                            
+                      </li>
+                      <li class="list-group-item">
+                          <i class="wi wi-humidity"></i> Humidité: {{cityWeather.main.humidity}}%                           
+                      </li>
+                      <li class="list-group-item">
+                          <i class="wi wi-windy"></i> Vent: {{cityWeather.wind.speed}} km/h
+                      </li>
+                      <li class="list-group-item">
+                          <i class="wi wi-sunrise"></i> 
+                          Levé du soleil: 
+                          {{new Date(cityWeather.sys.sunrise * 1000).toTimeString()}}
+                      </li>
+                      <li class="list-group-item">
+                          <i class="wi wi-sunset"></i>
+                          Couché du soleil: 
+                          {{new Date(cityWeather.sys.sunset * 1000).toTimeString()}}
+                      </li>
+                  </ul>        
+              </div>
+          </div>
+
+          </div>    
+          </div>
+
+          <footer>
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-12 col-sm-12">
+                    <div class="wow fadeInUp footer-copyright" data-wow-delay="1.8s">
+                         <p>Copyright &copy; 2018 Imad MESSILI
+                    </div>
+                    <ul class="wow">
+                         <li><a href="https://www.youtube.com/channel/UCB848rw_XZ4L3UVYv4ZkeTQ" class="fa fa-youtube-play"></a></li>
+                         <li><a href="https://www.linkedin.com/in/imad-messili" class="fa fa-linkedin"></a></li>
+                         <li><a href="https://www.twitter.com/messiliimad" class="fa fa-twitter"></a></li>
+                    </ul>
+               </div>
+               
+          </div>
+     </div>
+</footer>
     </body>
 </html>
