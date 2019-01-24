@@ -1,35 +1,58 @@
 <!doctype html>
-<html>
-    <head>
+<html lang="en">
+  <head>
         <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TP6</title>
+          <base href="/dist">        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Imad MESSILI MeteoAngular</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+     	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/libs/vue.js"></script>
+        <script type="text/javascript" src="js/libs/bootstrap.js"></script>
+        <script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link rel="icon" type="image/png" href="./images/info.png">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/weather-icons.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" href="./img/info.png">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 
-        <!-- Place favicon.ico in the root directory -->
 
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="main.js"></script>-->
-    </head>
-    <body>        
-        <h1>TP6</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
-    </body>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+    <div class="container">
+      <div class="v-fs-wrap">
+                  <video autoplay muted loop id="vid">
+                      <source src="../img/clouds.mp4" type="video/mp4">
+                  </video>
+              </div>
+  <app-root></app-root>
+   <footer>
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-12 col-sm-12">
+                    <div class="wow fadeInUp footer-copyright" data-wow-delay="1.8s">
+                         <p>Copyright &copy; 2018 Imad MESSILI
+                    </div>
+                    <ul class="wow">
+                         <li><a href="https://www.youtube.com/channel/UCB848rw_XZ4L3UVYv4ZkeTQ" class="fa fa-youtube-play"></a></li>
+                         <li><a href="https://www.linkedin.com/in/imad-messili" class="fa fa-linkedin"></a></li>
+                         <li><a href="https://www.twitter.com/messiliimad" class="fa fa-twitter"></a></li>
+                    </ul>
+               </div>
+               
+          </div>
+     </div>
+</footer>
+
+<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
 </html>
