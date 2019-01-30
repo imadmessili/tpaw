@@ -104,7 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /**
- * @license Angular v7.2.1
+ * @license Angular v7.2.2
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -3922,21 +3922,35 @@ var NgPluralCase = /** @class */ (function () {
  * @ngModule CommonModule
  *
  * @usageNotes
+ *
+ * Set the font of the containing element to the result of an expression.
+ *
  * ```
  * <some-element [ngStyle]="{'font-style': styleExp}">...</some-element>
+ * ```
  *
+ * Set the width of the containing element to a pixel value returned by an expression.
+ *
+ * ```
  * <some-element [ngStyle]="{'max-width.px': widthExp}">...</some-element>
+ * ```
  *
+ * Set a collection of style values using an expression that returns key-value pairs.
+ *
+ * ```
  * <some-element [ngStyle]="objExp">...</some-element>
  * ```
  *
  * @description
  *
- * Update an HTML element styles.
- *
- * The styles are updated according to the value of the expression evaluation:
- * - keys are style names with an optional `.<unit>` suffix (ie 'top.px', 'font-style.em'),
- * - values are the values assigned to those properties (expressed in the given unit).
+ * An attribute directive that updates styles for the containing HTML element.
+ * Sets one or more style properties, specified as colon-separated key-value pairs.
+ * The key is a style name, with an optional `.<unit>` suffix
+ * (such as 'top.px', 'font-style.em').
+ * The value is an expression to be evaluated.
+ * The resulting non-null value, expressed in the given unit,
+ * is assigned to the given style property.
+ * If the result of evaluation is null, the corresponding style is removed.
  *
  * @publicApi
  */
@@ -3947,7 +3961,15 @@ var NgStyle = /** @class */ (function () {
         this._renderer = _renderer;
     }
     Object.defineProperty(NgStyle.prototype, "ngStyle", {
-        set: function (values) {
+        set: function (
+        /**
+         * A map of style properties, specified as colon-separated
+         * key-value pairs.
+         * * The key is a style name, with an optional `.<unit>` suffix
+         *    (such as 'top.px', 'font-style.em').
+         * * The value is an expression to be evaluated.
+         */
+        values) {
             this._ngStyle = values;
             if (!this._differ && values) {
                 this._differ = this._differs.find(values).create();
@@ -3956,6 +3978,9 @@ var NgStyle = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    /**
+     * Applies the new styles if needed.
+     */
     NgStyle.prototype.ngDoCheck = function () {
         if (this._differ) {
             var changes = this._differ.diff(this._ngStyle);
@@ -5797,7 +5822,7 @@ function isPlatformWorkerUi(platformId) {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('7.2.1');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('7.2.2');
 
 /**
  * @license
@@ -6262,7 +6287,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "R3BoundTarget", function() { return R3BoundTarget; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /**
- * @license Angular v7.2.1
+ * @license Angular v7.2.2
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -22024,7 +22049,7 @@ function publishFacade(global) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-var VERSION$1 = new Version('7.2.1');
+var VERSION$1 = new Version('7.2.2');
 
 /**
  * @license
@@ -33719,7 +33744,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /**
- * @license Angular v7.2.1
+ * @license Angular v7.2.2
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -44462,7 +44487,7 @@ var Version = /** @class */ (function () {
 /**
  * @publicApi
  */
-var VERSION = new Version('7.2.1');
+var VERSION = new Version('7.2.2');
 
 /**
  * @license
@@ -58200,7 +58225,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /**
- * @license Angular v7.2.1
+ * @license Angular v7.2.2
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -64722,7 +64747,7 @@ var FormBuilder = /** @class */ (function () {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.1');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.2');
 
 /**
  * @license
@@ -64947,7 +64972,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /**
- * @license Angular v7.2.1
+ * @license Angular v7.2.2
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -65384,7 +65409,7 @@ var CachedResourceLoader = /** @class */ (function (_super) {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.1');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Version"]('7.2.2');
 
 /**
  * @license
@@ -65494,7 +65519,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /**
- * @license Angular v7.2.1
+ * @license Angular v7.2.2
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -67967,7 +67992,7 @@ var By = /** @class */ (function () {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.1');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.2');
 
 /**
  * @license
@@ -68084,7 +68109,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /**
- * @license Angular v7.2.1
+ * @license Angular v7.2.2
  * (c) 2010-2018 Google, Inc. https://angular.io/
  * License: MIT
  */
@@ -71937,8 +71962,10 @@ var Router = /** @class */ (function () {
                     recognize$1(_this.rootComponentType, _this.config, function (url) { return _this.serializeUrl(url); }, _this.paramsInheritanceStrategy, _this.relativeLinkResolution), 
                     // Update URL if in `eager` update mode
                     Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (t) {
-                        if (_this.urlUpdateStrategy === 'eager' && !t.extras.skipLocationChange) {
-                            _this.setBrowserUrl(t.urlAfterRedirects, !!t.extras.replaceUrl, t.id);
+                        if (_this.urlUpdateStrategy === 'eager') {
+                            if (!t.extras.skipLocationChange) {
+                                _this.setBrowserUrl(t.urlAfterRedirects, !!t.extras.replaceUrl, t.id);
+                            }
                             _this.browserUrlTree = t.urlAfterRedirects;
                         }
                     }), 
@@ -72043,8 +72070,10 @@ var Router = /** @class */ (function () {
                 _this.currentUrlTree = t.urlAfterRedirects;
                 _this.rawUrlTree = _this.urlHandlingStrategy.merge(_this.currentUrlTree, t.rawUrl);
                 _this.routerState = t.targetRouterState;
-                if (_this.urlUpdateStrategy === 'deferred' && !t.extras.skipLocationChange) {
-                    _this.setBrowserUrl(_this.rawUrlTree, !!t.extras.replaceUrl, t.id, t.extras.state);
+                if (_this.urlUpdateStrategy === 'deferred') {
+                    if (!t.extras.skipLocationChange) {
+                        _this.setBrowserUrl(_this.rawUrlTree, !!t.extras.replaceUrl, t.id, t.extras.state);
+                    }
                     _this.browserUrlTree = t.urlAfterRedirects;
                 }
             }), activateRoutes(_this.rootContexts, _this.routeReuseStrategy, function (evt) { return _this.triggerEvent(evt); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])({ next: function () { completed = true; }, complete: function () { completed = true; } }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["finalize"])(function () {
@@ -73793,7 +73822,7 @@ function provideRouterInitializer() {
 /**
  * @publicApi
  */
-var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.1');
+var VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Version"]('7.2.2');
 
 /**
  * @license
