@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MeteoItem } from '../meteoItem';
-
-
-@Injectable()
+//import { Observable } from 'rxjs/Observable';
+//import { of } from 'rxjs/observable/of';
+/*
+@Injectable({
+  providedIn: 'root'
+})
+*/
+@Injectable({ providedIn: 'root' })
 export class MeteoService {
 
   constructor() { }
@@ -13,9 +18,9 @@ export class MeteoService {
 
     let m = new MeteoItem();
 
-    return fetch('https://api.openweathermap.org/data/2.5/weather/?q=' + name + '&units=metric&lang=fr&appid=a2c9428b650b54bec8bf791bd7190501')
+    return fetch('https://demo.bilelz.fr/owmap/?q=' + name + '&units=metric&lang=fr&appid=ad6c3f76aa016ba417579de2f72afbe1')
       .then(function (response) {
-        return response.json() ;
+        return response.json();
       })
       .then(function (json) {
 

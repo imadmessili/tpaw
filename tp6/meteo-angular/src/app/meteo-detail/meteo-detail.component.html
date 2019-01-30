@@ -1,10 +1,5 @@
 <!-- meteo de la ville selectionnée -->
 <!-- meteo de la ville selectionnée -->
-<div class="v-fs-wrap">
-                  <video autoplay muted loop id="vid">
-                      <source src="../img/clouds.mp4" type="video/mp4">
-                  </video>
-              </div>
 <div *ngIf="meteo && meteo.cod === 200">
 
   <nav aria-label="breadcrumb">
@@ -16,7 +11,7 @@
     </ol>
   </nav>
 
-  <div class="card" style="width:90%; margin: 0 auto" v-if="meteo">
+  <div class="card" style="width:80%; margin: 0 auto" v-if="meteo">
     <div class="card-header">
       {{meteo.name}} @{{meteo.dt | date:'H:mm'}}
     </div>
@@ -41,18 +36,18 @@
         <i class="wi wi-windy"></i> Vent: {{meteo.wind.speed}} km/h
       </li>
       <li class="list-group-item">
-        <i class="wi wi-sunrise"></i> Levé du soleil: {{meteo.sys.sunrise}} // Date au format Timestamp à transformer au format 'H:mm'
+        <i class="wi wi-sunrise"></i> Levé du soleil: {{meteo.sys.sunrise}} 
       </li>
       <li class="list-group-item">
-        <i class="wi wi-sunset"></i>Couché du soleil: {{meteo.sys.sunset}} // Date au format Timestamp à transformer au format 'H:mm'
+        <i class="wi wi-sunset"></i>Couché du soleil: {{meteo.sys.sunset}} 
       </li>
     </ul>
   </div>
 </div>
 
-  
 <div class="alert alert-danger" *ngIf="meteo && meteo.cod !== 200">
 
   {{meteo.message}} (erreur {{meteo.cod}})
 </div>
+      <router-outlet></router-outlet>
 
