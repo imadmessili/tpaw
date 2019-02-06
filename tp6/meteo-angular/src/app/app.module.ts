@@ -27,21 +27,20 @@ const appRoutes: Routes = [
   ];
 
 
+
+
 @NgModule({
  
   declarations: [
     AppComponent,
     MeteoComponent,
     MeteoDetailComponent,
-    //ServicesComponent
    
   ],
-  imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
-    BrowserModule,
+    imports: [
+      BrowserModule,      
+
+    RouterModule.forRoot(appRoutes,{ enableTracing: true }),
     AppRoutingModule,
     FormsModule,
     RouterModule
@@ -54,5 +53,7 @@ const appRoutes: Routes = [
 
 
 
-export class AppModule { }
+export class AppModule {
+
+}
 
