@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
-        this.title = '⛅ Weather webapp @Imad MESSILI';
+        this.title = 'meteo-angular';
     }
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -123,10 +123,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _meteo_meteo_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./meteo/meteo.component */ "./src/app/meteo/meteo.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _meteo_meteo_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./meteo/meteo.component */ "./src/app/meteo/meteo.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _meteo_detail_meteo_detail_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./meteo-detail/meteo-detail.component */ "./src/app/meteo-detail/meteo-detail.component.ts");
 
@@ -138,7 +138,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-//import { ServicesComponent } from './services/services.component';
 var appRoutes = [
     {
         path: 'meteo/:name',
@@ -151,28 +150,32 @@ var appRoutes = [
     },
     {
         path: '',
-        component: _meteo_meteo_component__WEBPACK_IMPORTED_MODULE_6__["MeteoComponent"]
+        component: _meteo_meteo_component__WEBPACK_IMPORTED_MODULE_5__["MeteoComponent"]
     }
 ];
+// la page principale utilisera le component suivant
+// la page principale utilisera le component suivant
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _meteo_meteo_component__WEBPACK_IMPORTED_MODULE_6__["MeteoComponent"],
-                _meteo_detail_meteo_detail_component__WEBPACK_IMPORTED_MODULE_8__["MeteoDetailComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
+                _meteo_meteo_component__WEBPACK_IMPORTED_MODULE_5__["MeteoComponent"],
+                _meteo_detail_meteo_detail_component__WEBPACK_IMPORTED_MODULE_8__["MeteoDetailComponent"]
             ],
             imports: [
+                _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
+                )
+                // autres imports ici
+                ,
+                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forRoot(appRoutes, { enableTracing: true }),
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"]
             ],
             providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -200,7 +203,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- meteo de la ville selectionnée -->\n<!-- meteo de la ville selectionnée -->\n<div *ngIf=\"meteo && meteo.cod === 200\">\n\n  <nav aria-label=\"breadcrumb\">\n    <ol class=\"breadcrumb\">\n      <li class=\"breadcrumb-item\">\n        <a routerLink=\"/\">🏠</a>\n      </li>\n      <li class=\"breadcrumb-item active\" aria-current=\"page\">Météo pour {{meteo.name}}</li>\n    </ol>\n  </nav>\n\n  <div class=\"card\" style=\"width:80%; margin: 0 auto\" v-if=\"meteo\">\n    <div class=\"card-header\">\n      {{meteo.name}} @{{meteo.dt | date:'H:mm'}}\n    </div>\n    <img class=\"card-img-top\" src=\"https://maps.googleapis.com/maps/api/staticmap?markers={{meteo.coord.lat}},{{meteo.coord.lon}}&zoom=5&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg\"\n      alt=\"Card image cap\">\n    <div class=\"card-body\">\n      <h5 class=\"card-title\">\n        <i v-bind:class=\"'wi wi-owm-day-'+meteo.weather[0].id\"></i>\n        {{meteo.main.temp}}\n        <i class=\"wi wi-celsius\"></i>\n      </h5>\n      <p class=\"card-text\">{{meteo.weather[0].description}}</p>\n    </div>\n    <ul class=\"list-group list-group-flush\">\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-cloud\"></i> Nuage: {{meteo.clouds.all}}%\n      </li>\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-humidity\"></i> Humidité: {{meteo.main.humidity}}%\n      </li>\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-windy\"></i> Vent: {{meteo.wind.speed}} km/h\n      </li>\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-sunrise\"></i> Levé du soleil: {{meteo.sys.sunrise}} \n      </li>\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-sunset\"></i>Couché du soleil: {{meteo.sys.sunset}} \n      </li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"alert alert-danger\" *ngIf=\"meteo && meteo.cod !== 200\">\n\n  {{meteo.message}} (erreur {{meteo.cod}})\n</div>\n      <router-outlet></router-outlet>\n\n"
+module.exports = "<!-- meteo de la ville selectionnée -->\n<!-- meteo de la ville selectionnée -->\n<div *ngIf=\"meteo && meteo.cod === 200\">\n\n  <nav aria-label=\"breadcrumb\">\n    <ol class=\"breadcrumb\">\n      <li class=\"breadcrumb-item\">\n        <a routerLink=\"/\">🏠</a>\n      </li>\n      <li class=\"breadcrumb-item active\" aria-current=\"page\">Météo pour {{meteo.name}}</li>\n    </ol>\n  </nav>\n\n  <div class=\"card\" style=\"width:80%; margin: 0 auto\" v-if=\"meteo\">\n    <div class=\"card-header\">\n      {{meteo.name}} @{{meteo.dt | date:'H:mm'}}\n    </div>\n    <img class=\"card-img-top\" src=\"https://maps.googleapis.com/maps/api/staticmap?markers={{meteo.coord.lat}},{{meteo.coord.lon}}&zoom=5&size=400x300&scale=2&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg\"\n      alt=\"Card image cap\">\n    <div class=\"card-body\">\n      <h5 class=\"card-title\">\n        <i v-bind:class=\"'wi wi-owm-day-'+meteo.weather[0].id\"></i>\n        {{meteo.main.temp}}\n        <i class=\"wi wi-celsius\"></i>\n      </h5>\n      <p class=\"card-text\">{{meteo.weather[0].description}}</p>\n    </div>\n    <ul class=\"list-group list-group-flush\">\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-cloud\"></i> Nuage: {{meteo.clouds.all}}%\n      </li>\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-humidity\"></i> Humidité: {{meteo.main.humidity}}%\n      </li>\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-windy\"></i> Vent: {{meteo.wind.speed}} km/h\n      </li>\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-sunrise\"></i> Levé du soleil: {{meteo.sys.sunrise}} \n      </li>\n      <li class=\"list-group-item\">\n        <i class=\"wi wi-sunset\"></i>Couché du soleil: {{meteo.sys.sunset}} \n      </li>\n    </ul>\n  </div>\n</div>\n\n<div class=\"alert alert-danger\" *ngIf=\"meteo && meteo.cod !== 200\">\n\n  {{meteo.message}} (erreur {{meteo.cod}})\n</div>\n\n"
 
 /***/ }),
 

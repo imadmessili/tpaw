@@ -4,24 +4,26 @@ import { MeteoItem } from '../meteoItem';
 @Component({
   selector: 'app-meteo',
   templateUrl: './meteo.component.html',
-  styleUrls: ['./meteo.component.css'],
-
+  styleUrls: ['./meteo.component.css']
 })
 export class MeteoComponent implements OnInit {
+
   city: MeteoItem = {
     name: '',
     id: null,
     weather: null
   };
+
   cityList: any;
   constructor() { }
 
   ngOnInit() {
-    if( localStorage.cityList !== undefined){
+    if (localStorage.cityList !== undefined) {
       this.cityList = JSON.parse(localStorage.cityList);
-    }else{
+    } else {
       this.cityList = [];
     }
+
   }
 
   onSubmit() {
@@ -34,7 +36,7 @@ export class MeteoComponent implements OnInit {
       this.saveCityList();
 
       console.log(this.city.name, 'ajouté à la dans la liste');
-    }else{
+    } else {
       console.log(this.city.name, 'existe déjà dans la liste');
     }
 
@@ -61,7 +63,7 @@ export class MeteoComponent implements OnInit {
     }
   }
 
-  saveCityList(){
+  saveCityList() {
     localStorage.cityList = JSON.stringify(this.cityList);
   }
 
